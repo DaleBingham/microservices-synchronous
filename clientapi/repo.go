@@ -27,8 +27,9 @@ func RepoFindClient(id int) Client {
 
 //need to check for race condtions
 func RepoCreateClient(t Client) Client {
-	currentId += 1
+	currentId++
 	t.Id = currentId
+	t.Created = time.Now()
 	clients = append(clients, t)
 	return t
 }

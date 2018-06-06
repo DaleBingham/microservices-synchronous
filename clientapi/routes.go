@@ -21,7 +21,7 @@ var routes = Routes{
 	Route{
 		"ClientCreate",
 		"POST",
-		"/client",
+		"/clients",
 		ClientCreate,
 	},
 	Route{
