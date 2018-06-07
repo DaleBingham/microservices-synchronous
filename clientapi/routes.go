@@ -30,4 +30,10 @@ var routes = Routes{
 		"/clients/{clientId}",
 		ClientShow,
 	},
+	Route{
+		"ClientDelete",
+		"DELETE",
+		"/clients/{clientId}",
+		ClientDelete,
+	},
 }

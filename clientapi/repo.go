@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"time"
 )
 
@@ -21,7 +20,7 @@ func RepoFindClient(id int) Client {
 			return t
 		}
 	}
-	// return empty Todo if not found
+	// return empty Client if not found
 	return Client{}
 }
 
@@ -34,12 +33,12 @@ func RepoCreateClient(t Client) Client {
 	return t
 }
 
-func RepoDestroyClient(id int) error {
+func RepoDestroyClient(id int) Client {
 	for i, t := range clients {
 		if t.Id == id {
 			clients = append(clients[:i], clients[i+1:]...)
-			return nil
+			return t
 		}
 	}
-	return fmt.Errorf("Could not find Client with id of %d to delete", id)
+	return Client{}
 }
