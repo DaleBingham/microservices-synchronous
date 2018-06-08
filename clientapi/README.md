@@ -3,12 +3,12 @@
 
 ## Database Container
 
-**docker run -d --name clientapidb --rm -e MYSQL_ROOT_PASSWORD=Myp@ssword! -e MYSQL_DATABASE=clientapi -e MYSQL_USER=clientapi -e MYSQL_PASSWORD=Client@pi! -p 3306:3306  mysql:8**
-
+* run the 'docker build -t clientapidb .' from within the database directory of clientapi
+* run 'docker run -d --name clientapidb --rm -p 3306:3306  clientapidb' to launch the db individually
 
 
 ## Database Structure for MySQL
-
+```
 CREATE TABLE clients (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -21,6 +21,7 @@ CREATE TABLE clients (
     phone VARCHAR(12) NOT NULL,
     created VARCHAR(100) NOT NULL
 );
+```
 
 ## ToDo's
 
