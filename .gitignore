@@ -6,3 +6,4 @@ obj
 packages
 *.exe
 src
+*.zip
