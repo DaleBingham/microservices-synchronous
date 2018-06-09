@@ -25,11 +25,11 @@ CREATE TABLE clients (
 
 ## API Calls
 
-GET http://localhost:xxxx/clients/ gets back a JSON listing of the Clients class.
+GET http://localhost:xxxx/api/clients/ gets back a JSON listing of the Clients class.
 
-GET http://localhost:xxxx/client/1 gets back a JSON listing of the Client class for the first record. You must add a record to view anything.
+GET http://localhost:xxxx/api/client/1 gets back a JSON listing of the Client class for the first record. You must add a record to view anything.
 
-POST http://localhost:xxxx/client will add this client with the information below
+POST http://localhost:xxxx/api/client will add this client with the information below
 ```
 {
 	"Name": "KBRwyle", 
@@ -42,7 +42,7 @@ POST http://localhost:xxxx/client will add this client with the information belo
 	"Phone": "301-555-1212"
 }
 ```
-PUT http://localhost:xxxx/client will update this client with the information below
+PUT http://localhost:xxxx/api/client will update this client with the information below
 ```
 {
     "Id" : 1,
