@@ -1,6 +1,11 @@
 # microservices-synchronous
-An example of microservices calling to get a process done synchronously using several programming languages
-
+An example of microservices calling to get a process done synchronously using several programming languages and database engines. We have the following 
+APIs within this project:
+* people API for CRUD on people
+* client API for CRUD on clients
+* inventory API for CRUD on inventory (coming)
+* sale API for CRUD on sales (coming)
+* reporting API for read-only access on data from the above with eventual consistency (coming)
 
 ## Setup
 
@@ -12,20 +17,21 @@ Feel free to clone and/or download this and use as you will. If there are edits 
 ### If you want to do yourself you can follow these steps
 * tbd
 
-## Building the Database Containers
-
+### Building the Database Containers
+* tbd
 
 
 ## API Calls
 
-http://localhost:8080/clients/ gets back a JSON listing of the Client class.
-
+See the relevant folders for the separate README files and API calls
 
 ## DB Structure
 
-There is a single table for 'Person' that has the following fields in a very, very simple layout for this concept:
-* tbd
+See the relevant folders for the separate README files and database structure. All databases are designed to run within containers with startup SQL scripts or
+schemas already built for the microservices. 
 
 ## ToDo's still
 * Document better
-* everything
+* Messaging for eventual consistency of data
+* Istio implementation for service mesh design
+* Event Driven Architecture
