@@ -7,3 +7,4 @@ packages
 *.exe
 src
 *.zip
+node_modules
