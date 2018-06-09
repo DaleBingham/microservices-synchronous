@@ -26,6 +26,8 @@ INSERT INTO inventory (name, description, price, saleprice, quantity, company)
 
 ## API Calls
 
+http://localhost:3000/api-docs is the Swagger 2.0 API Documentation for this.
+
 GET http://localhost:xxxx/api/inventory/ gets back a JSON listing of the Inventory class.
 
 GET http://localhost:xxxx/api/inventory/1 gets back a JSON listing of the Inventory class for the first record. You must add a record to view anything.
