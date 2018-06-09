@@ -28,11 +28,31 @@ docker run -d -p 1433:1433 --rm --name peopleapi-db peopleapi-db
 
 ## API Calls
 
-http://localhost:xxxx/api/people/ gets back a JSON listing of the Person class.
+GET http://localhost:xxxx/api/people/ gets back a JSON listing of the Person class.
 
-http://localhost:xxxx/api/people/71ab7dfc-953f-4821-b221-dcb3cf135068 gets back a JSON listing of the Person class for my record :).
+GET http://localhost:xxxx/api/people/71ab7dfc-953f-4821-b221-dcb3cf135068 gets back a JSON listing of the Person class for my record :).
 
-http://localhost:xxxx/swagger/ gives you the Swagger API documentation generated from the Person Controller where xxxx is the port 5000 or whatever you set it to be.
+GET http://localhost:xxxx/swagger/ gives you the Swagger API documentation generated from the Person Controller where xxxx is the port 5000 or whatever you set it to be.
+
+POST http://localhost:xxxx/api/people/ will create the record with the payload below
+```
+{"personId":"900e41ff-29ab-4a03-800b-8c58035c9260",
+"firstName":"Peter","middleName":"Richard",
+"lastName":"O'Toole","address":null,"city":"Annapolis",
+"state":"Maryland","zipCode":"21403","workPhone":"410-555-1212",
+"cellPhone":"443-555-1212","email":"potme@gmail.com",
+"twitter":"thetooler","linkedin":"PeterOT"}
+```
+
+PUT http://localhost:xxxx/api/people/900e41ff-29ab-4a03-800b-8c58035c9260 will update the record with the payload below
+```
+{"personId":"900e41ff-29ab-4a03-800b-8c58035c9260",
+"firstName":"Peter","middleName":"Richard",
+"lastName":"O'Toole","address":null,"city":"Annapolis",
+"state":"Maryland","zipCode":"21403","workPhone":"410-555-1212",
+"cellPhone":"443-555-1212","email":"potme@gmail.com",
+"twitter":"thetooler","linkedin":"PeterOT"}
+```
 
 ## DB Structure
 
