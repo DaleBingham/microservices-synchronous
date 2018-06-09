@@ -5,7 +5,7 @@ DROP DATABASE IF EXISTS inventory;
 CREATE DATABASE inventory;
 
 -- go to the database 'inventory' before we make any tables and insert data
-USE inventory;
+\c inventory;
 
 -- create the tables
 CREATE TABLE inventory (

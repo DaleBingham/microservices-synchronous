@@ -2,8 +2,8 @@
 This is a single Node API microservice with PostgreSQL backend as a POC. It is to show how to do a single API around a particular domain with a database that is its own in a separate programming language and database server. This requires Docker, NodeJS v 10.0 or later, and a web browser to run. Optionally you can use a SQL tool such as pgAdmin 4 to view the database if you so desire.
 
 ## Database Container
-
-* run the database: 'docker run -d --rm --name inventoryapidb -e POSTGRES_PASSWORD=Inventory@PI  -p 5432:5432 postgres:10-alpine'
+* run the 'docker build -t inventoryapidb .' from within the database directory of inventoryapi
+* run the database: 'docker run -d --rm --name inventoryapidb -e -p 5432:5432 inventoryapidb'
 
 ## Database Setup
 ```
