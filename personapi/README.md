@@ -28,6 +28,8 @@ docker run -d -p 1433:1433 --rm --name peopleapi-db peopleapi-db
 
 ## API Calls
 
+http://localhost:xxxx/swagger/ gets you the Swagger API Documentation
+
 GET http://localhost:xxxx/api/people/ gets back a JSON listing of the Person class.
 
 GET http://localhost:xxxx/api/people/71ab7dfc-953f-4821-b221-dcb3cf135068 gets back a JSON listing of the Person class for my record :).

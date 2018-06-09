@@ -61,3 +61,4 @@ PUT http://localhost:xxxx/client will update this client with the information be
 
 * Log events to an event stream
 * better documentation
+* auto-generate swagger API docs
