@@ -31,7 +31,7 @@ See the relevant folders for the separate README files and database structure. A
 schemas already built for the microservices. 
 
 ## ToDo's still
-* Document better
+* Document better, including https://www.draw.io/ documentation via images
 * Messaging for eventual consistency of data
 * Istio implementation for service mesh design
 * Event Driven Architecture
