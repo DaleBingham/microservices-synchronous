@@ -4,7 +4,7 @@ APIs within this project:
 * people API for CRUD on people with .NET Core and MSSQL Server Express Linux
 * client API for CRUD on clients with Golang and MySQL (these are basically companies)
 * inventory API for CRUD on inventory with NodeJS and PostgreSQL
-* sale API for CRUD on sales (coming) with Java Spring Boot and Derby
+* sale API for CRUD on sales (coming) with Java Spring Boot and MongoDB
 * reporting API for read-only access on data from the above with eventual consistency (coming)
 
 ## Setup
