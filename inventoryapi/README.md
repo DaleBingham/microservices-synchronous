@@ -3,7 +3,7 @@ This is a single Node API microservice with PostgreSQL backend as a POC. It is t
 
 ## Database Container
 * run the 'docker build -t inventoryapidb .' from within the database directory of inventoryapi
-* run the database: 'docker run -d --rm --name inventoryapidb -e -p 5432:5432 inventoryapidb'
+* run the database: 'docker run -d --rm --name inventoryapidb -p 5432:5432 inventoryapidb'
 
 ## Database Setup
 ```
@@ -26,7 +26,7 @@ INSERT INTO inventory (name, description, price, saleprice, quantity, company)
 
 ## API Calls
 
-http://localhost:3000/api-docs is the Swagger 2.0 API Documentation for this.
+http://localhost:xxxx/api-docs is the Swagger 2.0 API Documentation for this.
 
 GET http://localhost:xxxx/api/inventory/ gets back a JSON listing of the Inventory class.
 
