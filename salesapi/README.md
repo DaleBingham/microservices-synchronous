@@ -10,33 +10,37 @@ Use the Mongo DB database created above and tie it into the application.properti
 
 ## API Calls
 
-GET http://localhost:xxxx/api/sales/ gets back a JSON listing of the Inventory class.
+GET http://localhost:xxxx/salesapi/api/sales gets back a JSON listing of the Inventory class.
 
-GET http://localhost:xxxx/api/sales/1 gets back a JSON listing of the Inventory class for the first record. You must add a record to view anything.
+GET http://localhost:xxxx/salesapi/api/sales/1 gets back a JSON listing of the Inventory class for the first record. You must add a record to view anything.
 
-POST http://localhost:xxxx/api/sales/ will add this Inventory item with the information below
+POST http://localhost:xxxx/salesapi/api/sales/ will add this Inventory item with the information below
 ```
 {
-	"name" : "Kids Bicycle Helmet - Medium", 
-	"description": "Kids bicycle helmet with strap for medium sized head.", 
-	"price": 15.09, 
-	"saleprice": null,
-	"quantity": 11, 
-	"company" : 1
+	"personId" : "71ab7dfc-953f-4821-b221-dcb3cf135068",
+    "clientId": 1,
+    "inventoryId" : 1,
+    "price" : 12.99,
+    "discount" : 0.00,
+    "tax" : 1.01,
+    "quantity": 1,
+    "created": "2018-06-10T12:00:00Z"
 }
 ```
-PUT http://localhost:xxxx/api/sales/1 will update this Inventory item with the information below
+PUT http://localhost:xxxx/salesapi/api/sales/5b1d56684083594064783160 will update this Inventory item with the information below
 ```
 {
-	"name" : "Kids Bicycle Helmet - Medium", 
-	"description": "Kids bicycle helmet with strap for medium sized head.", 
-	"price": 15.99, 
-	"saleprice": null,
-	"quantity": 11, 
-	"company" : 1
+	"personId" : "71ab7dfc-953f-4821-b221-dcb3cf135068",
+    "clientId": 1,
+    "inventoryId" : 1,
+    "price" : 12.99,
+    "discount" : 0.00,
+    "tax" : 1.01,
+    "quantity": 1,
+    "updated": "2018-06-10T16:09:00Z"
 }
 ```
-DELETE http://localhost:xxxx/api/sales/1 will delete this Inventory item if found
+DELETE http://localhost:xxxx/salesapi/api/sales/5b1d56684083594064783160 will delete this Inventory item if found
 
 ## ToDo's
 
