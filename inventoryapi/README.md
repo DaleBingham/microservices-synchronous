@@ -58,5 +58,7 @@ DELETE http://localhost:xxxx/api/inventory/2 will delete this Inventory item if 
 
 ## ToDo's
 
+* Make the app in a Docker container
+* docker-compose.yml to run these two together
 * Log events to an event stream
 * better documentation
