@@ -1,7 +1,7 @@
 # microservices-synchronous
 An example of microservices calling to get a process done synchronously using several programming languages and database engines. We have the following 
 APIs within this project:
-* people API for CRUD on people with .NET Core and MSSQL Server Express Linux
+* person API for CRUD on people with .NET Core and MSSQL Server Express Linux
 * client API for CRUD on clients with Golang and MySQL (these are basically companies)
 * inventory API for CRUD on inventory with NodeJS and PostgreSQL
 * sale API for CRUD on sales with Java Spring Boot and MongoDB
