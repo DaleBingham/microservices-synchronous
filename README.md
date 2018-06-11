@@ -5,7 +5,7 @@ APIs within this project:
 * client API for CRUD on clients with Golang and MySQL (these are basically companies)
 * inventory API for CRUD on inventory with NodeJS and PostgreSQL
 * sale API for CRUD on sales with Java Spring Boot and MongoDB
-* reporting API (coming soon) for read-only access on data from the above, i.e. sale linked to inventoryId, personId, and clientId for reference with the full recordset for each sale. Assuming one item per sale for simplicity.
+* reporting API (coming soon) for read-only access on data from the above, i.e. sale linked to inventoryId, personId, and clientId for reference with the full recordset for each sale. Assuming one item per sale for simplicity. This is the one that ties it all together.
 
 ## Setup
 
@@ -32,6 +32,7 @@ schemas already built for the microservices.
 
 ## ToDo's still
 * Document better, including https://www.draw.io/ documentation via images
+* single docker-compose to get all the pieces together talking and only exposing APIs not databases
 * Messaging for eventual consistency of data
 * Istio implementation for service mesh design
 * Event Driven Architecture
