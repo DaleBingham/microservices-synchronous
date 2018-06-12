@@ -11,4 +11,4 @@ services:
   clientapidb:
     image: clientapidb
     ports:
-      - 3306:3306
+      - 3306

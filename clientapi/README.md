@@ -1,12 +1,16 @@
 # Client API using Golang and MySQL
 This is a single Golang API microservice with MySQL backend as a POC. It is to show how to do a single API around a particular domain with a database that is its own in a separate programming language and database server. This requires Docker, Golang 1.10.x (or latest), and a web browser to run. Optionally you can use a SQL tool such as MySQL Workbench to view the database if you so desire.
 
-## Database Container
+## Option A: Run the API with Docker Compose
+* run 'docker-compose up -d' to run this as a networked set of containers
+* modify the main.go if you want to separate these and run independently for localhost:3306
+
+## Option B: Database Container
 
 * run the 'docker build -t clientapidb .' from within the database directory of clientapi
 * run 'docker run -d --name clientapidb --rm -p 3306:3306  clientapidb' to launch the db individually
 
-# GO application container
+# Option B: GO application container
 * run 'set CGO_ENABLED=0' (or export)
 * run 'set GOOS=linux' (or export)
 * run 'go build -a -installsuffix cgo -o clientapi .' to build a go application self contained for a small image
