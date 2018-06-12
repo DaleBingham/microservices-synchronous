@@ -1,0 +1,14 @@
+version : '3'
+ 
+services:
+  clientapi:
+    image: clientapi
+    ports:
+      - 9000:8080
+    depends_on:
+      - clientapidb
+  
+  clientapidb:
+    image: clientapidb
+    ports:
+      - 3306:3306

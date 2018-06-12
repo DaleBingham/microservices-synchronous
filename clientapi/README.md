@@ -6,6 +6,11 @@ This is a single Golang API microservice with MySQL backend as a POC. It is to s
 * run the 'docker build -t clientapidb .' from within the database directory of clientapi
 * run 'docker run -d --name clientapidb --rm -p 3306:3306  clientapidb' to launch the db individually
 
+# GO application container
+* run 'set CGO_ENABLED=0' (or export)
+* run 'set GOOS=linux' (or export)
+* run 'go build -a -installsuffix cgo -o clientapi .' to build a go application self contained for a small image
+* run 'docker run -it -p 8080:8080 --rm --name clientapi clientapi' to run the API, substituting the external port for what you require (it runs 8080 internal)
 
 ## Database Structure for MySQL
 ```
