@@ -1,0 +1,14 @@
+version : '3'
+ 
+services:
+  personapi:
+    image: personapi
+    ports:
+      - 9004:8080
+    depends_on:
+      - personapidb
+  
+  personapidb:
+    image: personapidb
+    ports:
+      - 1433
