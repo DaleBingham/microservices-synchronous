@@ -33,6 +33,7 @@ schemas already built for the microservices.
 ## ToDo's still
 * Document better, including https://www.draw.io/ documentation via images
 * single docker-compose to get all the pieces together talking and only exposing APIs not databases
+* Implement GitOps with Jenkins to auto-deploy locally with changes and webhooks
 * Messaging for eventual consistency of data
 * Istio implementation for service mesh design
 * Event Driven Architecture
