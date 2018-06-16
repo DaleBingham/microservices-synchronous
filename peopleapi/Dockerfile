@@ -14,6 +14,9 @@ RUN dotnet publish -c Release -o out
 FROM microsoft/dotnet:2.1-runtime
 WORKDIR /app
 COPY --from=build-env /app/out ./
+ENV ASPNETCORE_ENVIRONMENT Testing
+ENV ASPNETCORE_URLS http://*:8080
+ENV peopleapi-context "server=peopleapidb; user id=peopleAPI; password=myP@ssw0rd; initial catalog=peopleAPI;"
 
 EXPOSE 8080
 ENTRYPOINT ["dotnet", "peopleapi.dll"]

@@ -34,7 +34,14 @@ namespace peopleapi
             // Register the Swagger generator, defining one or more Swagger documents
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "People API", Version = "v1" });
+                c.SwaggerDoc("v1", new Info { Title = "People API", Version = "v1", 
+                    Description = "A simple ASP.NET Core Web API for CRUD on people",
+                    Contact = new Contact
+                    {
+                        Name = "Dale Bingham",
+                        Email = "dale.bingham@gmail.com",
+                        Url = "https://twitter.com/dale_bingham"
+                    } });
             });
           
             // ********************
@@ -70,7 +77,7 @@ namespace peopleapi
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/api-docs/v1/swagger.json", "People API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "People API V1");
             });
 
             // ********************
