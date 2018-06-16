@@ -12,25 +12,46 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
 @RestController
+@Api(value="onlinesales", description="All CRUD opertaining to sales")
 public class SalesController {
 
     @Autowired
     SalesRepository salesRepository;
 
-    @RequestMapping(method=RequestMethod.GET, value="/api/sales")
+    @ApiOperation(value = "View a list of all sales",response = Iterable.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully retrieved list"),
+            @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
+            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
+    	}
+    )    
+    @RequestMapping(method=RequestMethod.GET, value="/api/sales", produces = "application/json")
     public Iterable<Sales> sales() {
         return salesRepository.findAll();
     }
 
-    @RequestMapping(method=RequestMethod.POST, value="/api/sales")
+    @ApiOperation(value = "Create a new sales record",response = Sales.class)
+    @RequestMapping(method=RequestMethod.POST, value="/api/sales", produces = "application/json")
     public String save(@RequestBody Sales sales) {
         salesRepository.save(sales);
 
         return sales.getId();
     }
 
-    @RequestMapping(method=RequestMethod.GET, value="/api/sales/{id}")
+    @ApiOperation(value = "Search a sales record with an id",response = Sales.class)
+    @RequestMapping(method=RequestMethod.GET, value="/api/sales/{id}", produces = "application/json")
     public Sales show(@PathVariable String id) {
     	Optional<Sales> mysale = salesRepository.findById(id);
         if (mysale.isPresent())
@@ -39,8 +60,8 @@ public class SalesController {
     		return new Sales();
     }
 
-   
-    @RequestMapping(method=RequestMethod.PUT, value="/api/sales/{id}")
+    @ApiOperation(value = "Update a sales record with an id",response = Sales.class)
+    @RequestMapping(method=RequestMethod.PUT, value="/api/sales/{id}", produces = "application/json")
     public Sales update(@PathVariable String id, @RequestBody Sales sales) {
         Optional<Sales> mysale = salesRepository.findById(id);
         if (mysale.isPresent()) {
@@ -67,7 +88,8 @@ public class SalesController {
         	return new Sales();
     }
 
-    @RequestMapping(method=RequestMethod.DELETE, value="/api/sales/{id}")
+    @ApiOperation(value = "Delete a sales record with an id",response = Sales.class)
+    @RequestMapping(method=RequestMethod.DELETE, value="/api/sales/{id}", produces = "application/json")
     public String delete(@PathVariable String id) {
     	Optional<Sales> sales = salesRepository.findById(id);
     	if (sales.isPresent()) {

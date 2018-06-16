@@ -68,8 +68,6 @@ PUT http://localhost:xxxx/api/client will update this client with the informatio
 
 ## ToDo's
 
-* Docker to make the Go app within its own container
-* docker-compose file to bring the two up together
+* auto-generate swagger API docs
 * Log events to an event stream
 * better documentation
-* auto-generate swagger API docs

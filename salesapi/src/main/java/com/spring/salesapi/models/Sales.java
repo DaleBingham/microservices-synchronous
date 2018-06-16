@@ -1,5 +1,5 @@
 package com.spring.salesapi.models;
-
+import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 
 import org.springframework.data.annotation.Id;
@@ -8,15 +8,25 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "sales")
 public class Sales {
     @Id
+    @ApiModelProperty(notes = "The database generated sales ID")
     String id;
+    @ApiModelProperty(notes = "The person ID from the PersonAPI that is a Guid")
     String personId;
+    @ApiModelProperty(notes = "The client ID from the ClientAPI that is an integer")
     long clientId;
+    @ApiModelProperty(notes = "The inventory ID from the InventoryAPI that is an integer")
     long inventoryId;
+    @ApiModelProperty(notes = "The price of the item bought, coming from the InventoryAPI")
     BigDecimal price;
+    @ApiModelProperty(notes = "Any discounted price different from the main price, coming from the InventoryAPI")
     BigDecimal discount;
+    @ApiModelProperty(notes = "Any tax on the sale")
     float tax;
+    @ApiModelProperty(notes = "The quantity bought of the item")
     int quantity;
+    @ApiModelProperty(notes = "Auto-generated date for the sales transaction")
     String created;
+    @ApiModelProperty(notes = "Auto-generated date if the record is updated, otherwise null")
     String updated;
 
     public Sales() {
