@@ -1,6 +1,10 @@
 # Client API using NodeJS and PostgreSQL
 This is a single Node API microservice with PostgreSQL backend as a POC. It is to show how to do a single API around a particular domain with a database that is its own in a separate programming language and database server. This requires Docker, NodeJS v 10.0 or later, and a web browser to run. Optionally you can use a SQL tool such as pgAdmin 4 to view the database if you so desire.
 
+## Run the NodeJS Container
+* run 'docker build -t inventoryapi .' from the inventoryapi directory to build the image
+* run 'docker run -p xxxx:8080 -d --rm --name inventoryapi inventoryapi' to start the API by itself
+
 ## Database Container
 * run the 'docker build -t inventoryapidb .' from within the database directory of inventoryapi
 * run the database: 'docker run -d --rm --name inventoryapidb -p 5432:5432 inventoryapidb'
@@ -26,7 +30,7 @@ INSERT INTO inventory (name, description, price, saleprice, quantity, company)
 
 ## API Calls
 
-http://localhost:xxxx/api-docs is the Swagger 2.0 API Documentation for this.
+http://localhost:xxxx/swagger is the Swagger 2.0 API Documentation for this.
 
 GET http://localhost:xxxx/api/inventory/ gets back a JSON listing of the Inventory class.
 

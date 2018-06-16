@@ -4,10 +4,19 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+// Constants for the web server
+const PORT = 8080;
+const HOST = '0.0.0.0';
+
 var indexRouter = require('./routes/index');
 //var usersRouter = require('./routes/users');
 
+// App
 var app = express();
+
+//app.get('/', (req, res) => {
+//  res.send('Hello world\n');
+//});
 
 var swaggerUi = require('swagger-ui-express'), swaggerDocument = require('./swagger.json');
 
@@ -23,7 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 //app.use('/users', usersRouter);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/api/v1', indexRouter);
 
 // catch 404 and forward to error handler
@@ -52,5 +61,9 @@ app.use(function(err, req, res, next) {
     message: err.message
   });
 });
+
+// make the application listen on the port/host
+app.listen(PORT, HOST);
+console.log(`Running on http://${HOST}:${PORT}`);
 
 module.exports = app;
