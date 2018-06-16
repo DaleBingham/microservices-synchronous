@@ -23,6 +23,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api")
 @Api(value="onlinesales", description="All CRUD opertaining to sales")
 public class SalesController {
 
@@ -37,13 +38,13 @@ public class SalesController {
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     	}
     )    
-    @RequestMapping(method=RequestMethod.GET, value="/api/sales", produces = "application/json")
+    @RequestMapping(method=RequestMethod.GET, value="/sales", produces = "application/json")
     public Iterable<Sales> sales() {
         return salesRepository.findAll();
     }
 
     @ApiOperation(value = "Create a new sales record",response = Sales.class)
-    @RequestMapping(method=RequestMethod.POST, value="/api/sales", produces = "application/json")
+    @RequestMapping(method=RequestMethod.POST, value="/sales", produces = "application/json")
     public String save(@RequestBody Sales sales) {
         salesRepository.save(sales);
 
@@ -51,7 +52,7 @@ public class SalesController {
     }
 
     @ApiOperation(value = "Search a sales record with an id",response = Sales.class)
-    @RequestMapping(method=RequestMethod.GET, value="/api/sales/{id}", produces = "application/json")
+    @RequestMapping(method=RequestMethod.GET, value="/sales/{id}", produces = "application/json")
     public Sales show(@PathVariable String id) {
     	Optional<Sales> mysale = salesRepository.findById(id);
         if (mysale.isPresent())
@@ -61,7 +62,7 @@ public class SalesController {
     }
 
     @ApiOperation(value = "Update a sales record with an id",response = Sales.class)
-    @RequestMapping(method=RequestMethod.PUT, value="/api/sales/{id}", produces = "application/json")
+    @RequestMapping(method=RequestMethod.PUT, value="/sales/{id}", produces = "application/json")
     public Sales update(@PathVariable String id, @RequestBody Sales sales) {
         Optional<Sales> mysale = salesRepository.findById(id);
         if (mysale.isPresent()) {
@@ -89,7 +90,7 @@ public class SalesController {
     }
 
     @ApiOperation(value = "Delete a sales record with an id",response = Sales.class)
-    @RequestMapping(method=RequestMethod.DELETE, value="/api/sales/{id}", produces = "application/json")
+    @RequestMapping(method=RequestMethod.DELETE, value="/sales/{id}", produces = "application/json")
     public String delete(@PathVariable String id) {
     	Optional<Sales> sales = salesRepository.findById(id);
     	if (sales.isPresent()) {
