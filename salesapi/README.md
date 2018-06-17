@@ -14,9 +14,7 @@ Use the Mongo DB database created above and tie it into the application.properti
 
 ## API Calls
 
-GET http://locahost:xxxx/salesapi/v1/api-docs/ to get the generic swagger.json file.
-
-GET http://locahost:xxxx/salesapi/swagger-ui.html to get the generic swagger UI.
+GET http://localhost:9008/salesapi/swagger-ui.html for the Swagger UI API documentation.
 
 GET http://localhost:xxxx/salesapi/api/sales gets back a JSON listing of the Inventory class.
 
