@@ -3,42 +3,67 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using reportsapi.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Net.Http;
+using System.Net.Http.Headers;
+
 
 namespace reportsapi.Controllers
 {
     [Route("api/[controller]")]
     public class ReportsController : Controller
     {
-        // GET api/values
+        // GET api/reports
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IActionResult> Get()
         {
-            return new string[] { "value1", "value2" };
+            try {
+                return Json (await GetSales());
+            }
+            catch (Exception ex) {
+                // log the exception
+                return BadRequest(ex.Message);
+            }
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<IActionResult> Get(string id)
         {
-            return "value";
+            try {
+                return Json (await GetSale(id));
+            }
+            catch (Exception ex) {
+                // log the exception
+                return BadRequest(ex.Message);
+            }
         }
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
+        private async Task<List<Report>> GetSales() {
+            List<Report> reports = new List<Report>();   
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
+            return reports;
         }
+        private async Task<Report> GetSale(string saleid) {
+            Report report = new Report();   
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(Environment.GetEnvironmentVariable("salesapi_baseurl"));
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                // HTTP GET
+                HttpResponseMessage response = await client.GetAsync(saleid);
+                if (response.IsSuccessStatusCode)
+                {
+                    Sale sale = await response.Content.ReadAsAsync<Sale>();
+                    report.sale = sale;
+                }
+
+            }
+            return report;
         }
     }
 }
