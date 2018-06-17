@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "reportsapi"
+		},
+		{
+			"path": "clientapi"
+		},
+		{
+			"path": "inventoryapi"
+		},
+		{
+			"path": "salesapi"
+		},
+		{
+			"path": "peopleapi"
+		}
+	],
+	"settings": {}
+}

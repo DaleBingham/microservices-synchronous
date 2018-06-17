@@ -4,7 +4,7 @@ services:
   salesapi:
     image: salesapi
     ports:
-      - 9008:8080
+      - 9006:8080
     depends_on:
       - salesapidb
   
