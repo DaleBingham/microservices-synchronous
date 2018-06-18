@@ -78,7 +78,9 @@ namespace reportsapi.Controllers
             // go get the inventory record for the sale
             try {
                 if (report.sale.inventoryId > 0){
-                    report.inventory = GetDataById<Inventory>(Environment.GetEnvironmentVariable("inventoryapi_baseurl"), report.sale.inventoryId.ToString()).Result;
+                    InventoryResult result = GetDataById<InventoryResult>(Environment.GetEnvironmentVariable("inventoryapi_baseurl"), report.sale.inventoryId.ToString()).Result;
+                    if (result != null && result.data != null)
+                        report.inventory = result.data;
                 }
             }
             catch (Exception ex) {
