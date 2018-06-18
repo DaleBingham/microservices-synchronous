@@ -1,7 +1,0 @@
-version : '3'
- 
-services:
-  reportsapi:
-    image: reportsapi
-    ports:
-      - 9010:8080

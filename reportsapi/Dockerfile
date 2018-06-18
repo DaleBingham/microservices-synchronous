@@ -16,10 +16,6 @@ WORKDIR /app
 COPY --from=build-env /app/out ./
 ENV ASPNETCORE_ENVIRONMENT  Testing
 ENV ASPNETCORE_URLS         http://*:8080
-ENV peopleapi_baseurl       http://localhost:9004/api/people/
-ENV clientapi_baseurl       http://localhost:9000/api/clients/
-ENV salesapi_baseurl        http://localhost:9006/salesapi/api/sales/
-ENV inventoryapi_baseurl    http://localhost:9002/api/inventory/
 
 EXPOSE 8080
 ENTRYPOINT ["dotnet", "reportsapi.dll"]
