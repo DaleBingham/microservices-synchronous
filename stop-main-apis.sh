@@ -1,0 +1,9 @@
+cd clientapi
+docker-compose down
+cd ../inventoryapi
+docker-compose down
+cd ../salesapi
+docker-compose down
+cd ../peopleapi
+docker-compose down
+cd ..
