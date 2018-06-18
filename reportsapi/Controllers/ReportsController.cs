@@ -47,8 +47,8 @@ namespace reportsapi.Controllers
         }
         private async Task<Report> GetSale(string saleid) {
             Report report = new Report();   
-
-            using (var client = new HttpClient())
+            //Environment.GetEnvironmentVariable("");
+            /*using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(Environment.GetEnvironmentVariable("salesapi_baseurl"));
                 client.DefaultRequestHeaders.Accept.Clear();
@@ -62,8 +62,80 @@ namespace reportsapi.Controllers
                     report.sale = sale;
                 }
 
+            }*/
+            report.sale = GetDataById<Sale>(Environment.GetEnvironmentVariable("salesapi_baseurl"), saleid).Result;
+
+            // go get the person/people record for the sale
+            try {
+                if (!String.IsNullOrEmpty(report.sale.personId)){
+                    report.person = GetDataById<Person>(Environment.GetEnvironmentVariable("peopleapi_baseurl"), report.sale.personId).Result;
+                }
+            }
+            catch (Exception ex) {
+                //log that the personId is not valid
+            }
+
+            // go get the inventory record for the sale
+            try {
+                if (report.sale.inventoryId > 0){
+                    report.inventory = GetDataById<Inventory>(Environment.GetEnvironmentVariable("inventoryapi_baseurl"), report.sale.inventoryId.ToString()).Result;
+                }
+            }
+            catch (Exception ex) {
+                //log that the inventoryId is not valid
+            }
+
+            // go get the client record for the sale
+            try {
+                if (!String.IsNullOrEmpty(report.sale.clientId)){
+                    report.client = GetDataById<Client>(Environment.GetEnvironmentVariable("clientapi_baseurl"), report.sale.clientId.ToString()).Result;
+                }
+            }
+            catch (Exception ex) {
+                //log that the clientID is not valid
             }
             return report;
+        }
+
+        /// this is a generic Get All / List call to other APIs
+        private async Task<T> GetData<T>(string baseurl) {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(baseurl);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                // HTTP GET
+                HttpResponseMessage response = await client.GetAsync("");
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsAsync<T>();
+                }
+                else
+                return default(T);
+            }
+        }
+
+        /// this is a generic GetById call to other APIs
+        private async Task<T> GetDataById<T>(string baseurl, string id) {
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.BaseAddress = new Uri(baseurl);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Add("User-Agent", "Reports API");
+
+                // HTTP GET
+                HttpResponseMessage response = await client.GetAsync(id);
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsAsync<T>();
+                }
+                else
+                return default(T);
+            }
         }
     }
 }
