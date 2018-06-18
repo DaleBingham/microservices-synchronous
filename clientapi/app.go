@@ -39,10 +39,10 @@ func (a *App) Run(addr string) {
 
 func (a *App) initializeRoutes() {
 	a.Router.HandleFunc("/api/clients", a.getClients).Methods("GET")
-	a.Router.HandleFunc("/api/client", a.createClient).Methods("POST")
-	a.Router.HandleFunc("/api/client/{id:[0-9]+}", a.getClient).Methods("GET")
-	a.Router.HandleFunc("/api/client/{id:[0-9]+}", a.updateClient).Methods("PUT")
-	a.Router.HandleFunc("/api/client/{id:[0-9]+}", a.deleteClient).Methods("DELETE")
+	a.Router.HandleFunc("/api/clients", a.createClient).Methods("POST")
+	a.Router.HandleFunc("/api/clients/{id:[0-9]+}", a.getClient).Methods("GET")
+	a.Router.HandleFunc("/api/clients/{id:[0-9]+}", a.updateClient).Methods("PUT")
+	a.Router.HandleFunc("/api/clients/{id:[0-9]+}", a.deleteClient).Methods("DELETE")
 }
 
 func (a *App) getClients(w http.ResponseWriter, r *http.Request) {

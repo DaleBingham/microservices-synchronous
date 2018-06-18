@@ -14,7 +14,7 @@ namespace reportsapi.Models
         
         public decimal price { get; set; }
         
-        public decimal saleprice { get; set; }
+        public decimal? saleprice { get; set; }
         
         public int quantity { get; set; }
         

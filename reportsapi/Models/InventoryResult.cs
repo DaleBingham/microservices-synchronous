@@ -10,11 +10,11 @@ namespace reportsapi.Models
     public class InventoryResult
     {
         public InventoryResult() {
-            data = new Inventory();
+            Data = new Inventory();
         }
         
-        public string status { get; set; }
-        public Inventory data { get; set; }
-        public string message { get; set; }
+        public string Status { get; set; }
+        public Inventory Data { get; set; }
+        public string Message { get; set; }
     }
 }
