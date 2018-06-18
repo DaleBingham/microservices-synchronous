@@ -12,6 +12,8 @@ Feel free to clone and/or download this and use as you will. If there are edits 
 
 * You can run each API separately by having the runtimes and pulling down the projects to run within each folder. Be careful as all are set to port 8080 by default. Feel free to change that. I left them on purpose to show port translation later. 
 * There is a single docker-compose.yml file to run 'docker-compose up -d' if you want to spin up all containers and have them communicate. Note the environment pieces within the main docker-compose as it links to other containers by name.
+* You must seed the Clients API with a POST to add an initial client/company. See the README in that api folder for more information.
+* You must seed the Sales API with a POST to add an initial sale. See the README in that api folder for more information.
 
 ### If you want to build the images and then run docker-compose up -d
 * run 'build-api-images' sh or cmd as appropriate based on your OS.
