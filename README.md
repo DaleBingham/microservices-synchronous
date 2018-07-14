@@ -1,5 +1,5 @@
 # Synchronous Microservices
-An example of microservices that house and run their own data themselves.  You can call the individual people, client, inventory, or sale APIs for CRUD operations.  They are all "synchronous" as far as getting their data immediately from the API. We are using several programming languages and database engines on purpose to show that APIs do not care what language you run it. Just that the contract is right! We have the following APIs within this project:
+An example of microservices that house and run their own data themselves.  You can call the individual people, client, inventory, or sale APIs for CRUD operations.  They are all "synchronous" as far as getting their data immediately from the API. We are using several programming languages and database engines on purpose to show that APIs do not care what language you run behind the API contract. Just that the contract is right! We have the following APIs within this project:
 * people API for CRUD on people with .NET Core and MSSQL Server Express Linux
 * client API for CRUD on clients with Golang and MySQL (these are basically companies)
 * inventory API for CRUD on inventory with NodeJS and PostgreSQL
