@@ -23,7 +23,7 @@ GET http://localhost:xxxx/salesapi/api/sales/1 gets back a JSON listing of the I
 POST http://localhost:xxxx/salesapi/api/sales/ will add this Inventory item with the information below
 ```
 {
-	"personId" : "71ab7dfc-953f-4821-b221-dcb3cf135068",
+    "personId" : "71ab7dfc-953f-4821-b221-dcb3cf135068",
     "clientId": 1,
     "inventoryId" : 1,
     "price" : 12.99,
@@ -36,7 +36,7 @@ POST http://localhost:xxxx/salesapi/api/sales/ will add this Inventory item with
 PUT http://localhost:xxxx/salesapi/api/sales/5b1d56684083594064783160 will update this Inventory item with the information below
 ```
 {
-	"personId" : "71ab7dfc-953f-4821-b221-dcb3cf135068",
+    "personId" : "71ab7dfc-953f-4821-b221-dcb3cf135068",
     "clientId": 1,
     "inventoryId" : 1,
     "price" : 12.99,
