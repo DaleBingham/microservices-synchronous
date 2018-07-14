@@ -36,22 +36,26 @@ GET http://localhost:xxxx/api/people/71ab7dfc-953f-4821-b221-dcb3cf135068 gets b
 
 POST http://localhost:xxxx/api/people/ will create the record with the payload below
 ```
-{"personId":"900e41ff-29ab-4a03-800b-8c58035c9260",
-"firstName":"Peter","middleName":"Richard",
-"lastName":"O'Toole","address":null,"city":"Annapolis",
-"state":"Maryland","zipCode":"21403","workPhone":"410-555-1212",
-"cellPhone":"443-555-1212","email":"potme@gmail.com",
-"twitter":"thetooler","linkedin":"PeterOT"}
+{
+    "personId":"900e41ff-29ab-4a03-800b-8c58035c9260",
+    "firstName":"Peter","middleName":"Richard",
+    "lastName":"O'Toole","address":null,"city":"Annapolis",
+    "state":"Maryland","zipCode":"21403","workPhone":"410-555-1212",
+    "cellPhone":"443-555-1212","email":"potme@gmail.com",
+    "twitter":"thetooler","linkedin":"PeterOT"
+}
 ```
 
 PUT http://localhost:xxxx/api/people/900e41ff-29ab-4a03-800b-8c58035c9260 will update the record with the payload below
 ```
-{"personId":"900e41ff-29ab-4a03-800b-8c58035c9260",
-"firstName":"Peter","middleName":"Richard",
-"lastName":"O'Toole","address":null,"city":"Annapolis",
-"state":"Maryland","zipCode":"21403","workPhone":"410-555-1212",
-"cellPhone":"443-555-1212","email":"potme@gmail.com",
-"twitter":"thetooler","linkedin":"PeterOT"}
+{
+    "personId":"900e41ff-29ab-4a03-800b-8c58035c9260",
+    "firstName":"Peter","middleName":"Richard",
+    "lastName":"O'Toole","address":null,"city":"Annapolis",
+    "state":"Maryland","zipCode":"21403","workPhone":"410-555-1212",
+    "cellPhone":"443-555-1212","email":"potme@gmail.com",
+    "twitter":"thetooler","linkedin":"PeterOT"
+}
 ```
 
 ## DB Structure
