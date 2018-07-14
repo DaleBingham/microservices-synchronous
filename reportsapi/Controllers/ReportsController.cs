@@ -60,7 +60,7 @@ namespace reportsapi.Controllers
             Report report = new Report();
             try {
                 Task<Sale> s = GetDataById<Sale>(Environment.GetEnvironmentVariable("salesapi_baseurl"), saleid);
-                if (s != null && s.Result != null){
+                if (s != null && s.Result != null && !string.IsNullOrEmpty(s.Result.id)){
                     report.sale = s.Result;
                 }
                 else {
