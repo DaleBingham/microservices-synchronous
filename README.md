@@ -27,8 +27,7 @@ See the relevant folders for the separate README files and API calls. Also each 
 
 ## DB Structure
 
-See the relevant folders for the separate README files and database structure. All databases are designed to run within containers with startup SQL scripts or
-schemas already built for the microservices. 
+See the relevant folders for the separate README files and database structure. All databases are designed to run within containers with startup SQL scripts or schemas already built for the microservices. 
 
 ## ToDo's still
 * Document better, including https://www.draw.io/ documentation via images

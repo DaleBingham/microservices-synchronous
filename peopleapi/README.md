@@ -77,4 +77,3 @@ There is a single table for 'Person' that has the following fields in a very, ve
 
 ## ToDo's still
 * Document better
-* Dataset examples for POST, PUT
