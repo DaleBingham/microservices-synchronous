@@ -32,7 +32,11 @@ namespace reportsapi.Controllers
         public async Task<IActionResult> Get(string id)
         {
             try {
-                return Json (await GetSale(id));
+                Report r = await GetSale(id); 
+                if (r != null)
+                    return Json (r);
+                else
+                    return NotFound();
             }
             catch (Exception ex) {
                 // log the exception

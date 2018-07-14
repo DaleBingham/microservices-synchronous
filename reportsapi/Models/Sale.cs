@@ -11,8 +11,8 @@ namespace reportsapi.Models
         public string personId { get; set; }
         public string clientId { get; set; }
         public long inventoryId { get; set; }
-        public decimal price { get; set; }
-        public decimal discount { get; set; }
+        public decimal? price { get; set; }
+        public decimal? discount { get; set; }
         public decimal tax { get; set; }
         public int quantity { get; set; }
         public string created { get; set; }
