@@ -41,18 +41,43 @@ namespace reportsapi.Controllers
         }
 
         private async Task<List<Report>> GetSales() {
-            List<Report> reports = new List<Report>();   
-
+            List<Report> reports =new List<Report>();
+            Report r;
+            // get the list of sales
+            List<Sale> sales = GetData<List<Sale>>(Environment.GetEnvironmentVariable("salesapi_baseurl")).Result;
+            foreach (Sale s in sales) {
+                r = new Report();
+                // for each sale, call the GetSale(string saleid) to fill each report
+                r = await GetSale(s.id);
+                // add each report to the list if a valid sale
+                if (r != null) reports.Add(r);
+            }
+            // return the reports
             return reports;
         }
+    
         private async Task<Report> GetSale(string saleid) {
             Report report = new Report();
-            report.sale = GetDataById<Sale>(Environment.GetEnvironmentVariable("salesapi_baseurl"), saleid).Result;
+            try {
+                Task<Sale> s = GetDataById<Sale>(Environment.GetEnvironmentVariable("salesapi_baseurl"), saleid);
+                if (s != null && s.Result != null){
+                    report.sale = s.Result;
+                }
+                else {
+                    return null;
+                }
+            }
+            catch (Exception ex) {
+
+            }
 
             // go get the person/people record for the sale
             try {
                 if (!String.IsNullOrEmpty(report.sale.personId)){
-                    report.person = GetDataById<Person>(Environment.GetEnvironmentVariable("peopleapi_baseurl"), report.sale.personId).Result;
+                    Task<Person> p = GetDataById<Person>(Environment.GetEnvironmentVariable("peopleapi_baseurl"), report.sale.personId);
+                    if (p != null && p.Result != null && p.Result.PersonId != null && !string.IsNullOrEmpty(p.Result.PersonId.ToString())) {
+                        report.person = p.Result;
+                    }
                 }
             }
             catch (Exception ex) {
@@ -62,9 +87,9 @@ namespace reportsapi.Controllers
             // go get the inventory record for the sale
             try {
                 if (report.sale.inventoryId > 0){
-                    InventoryResult result = GetDataById<InventoryResult>(Environment.GetEnvironmentVariable("inventoryapi_baseurl"), report.sale.inventoryId.ToString()).Result;
-                    if (result != null && result.Data != null)
-                        report.inventory = result.Data;
+                    Task<InventoryResult> invResult = GetDataById<InventoryResult>(Environment.GetEnvironmentVariable("inventoryapi_baseurl"), report.sale.inventoryId.ToString());
+                    if (invResult != null && invResult.Result != null && invResult.Result.Data != null)
+                        report.inventory = invResult.Result.Data;
                 }
             }
             catch (Exception ex) {
@@ -74,7 +99,10 @@ namespace reportsapi.Controllers
             // go get the client record for the sale
             try {
                 if (!String.IsNullOrEmpty(report.sale.clientId)){
-                    report.client = GetDataById<Client>(Environment.GetEnvironmentVariable("clientapi_baseurl"), report.sale.clientId.ToString()).Result;
+                    Task<Client> c = GetDataById<Client>(Environment.GetEnvironmentVariable("clientapi_baseurl"), report.sale.clientId.ToString());
+                    if (c != null && c.Result != null && c.Result.ID > 0){
+                        report.client = c.Result;
+                    }
                 }
             }
             catch (Exception ex) {
